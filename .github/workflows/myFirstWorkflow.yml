@@ -5,11 +5,24 @@ name: my-first-workflow
 on: push
 
 jobs:
-  my_first_job:
-    name: My first job
+  job1:
+    name: Job1
     runs-on: ubuntu-latest
     steps:
       - name: Running single command in my_first_job
         run: echo "hi workflow "
       - name: Checking OS release
         run: cat /etc/os-release
+      - name: Calling sleep
+        run: sleep 20
+  job2:
+    name: Job2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking the hostname for runner
+        run: hostname
+      - name: Running multiple commands
+        run: | 
+          echo "Hi from Daniel"
+          echo "Current time is `date`"
+          sleep 20
