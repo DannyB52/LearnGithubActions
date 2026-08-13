@@ -44,4 +44,4 @@ jobs:
       - name: Job with multiple dependency
         run: sleep 10
       - name: Check runner info
-        run: sw-vers
+        run: sw_vers
