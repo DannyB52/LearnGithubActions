@@ -8,14 +8,14 @@ jobs:
     name: Job1
     runs-on: ubuntu-latest
     steps:
-      - name: Step 1
+      - name: step-1
         run:
           pwd
           ls -ltr
           hostname
-      - name: Step 2 - Checkout
-      uses: actions/checkout@v5.0.0
-      name: Step 3
+      - name: step-2 - Checkout
+        uses: actions/checkout@v5.0.0
+        name: Step 3
       run:
         pwd
         ls -ltr
