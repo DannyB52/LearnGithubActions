@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Step 2 - Checkout
-        run: echo "hi workflow "
+        run:
           pwd
           ls -ltr
           hostname
       - name: Checkout
-      uses: actions/checkout@v5.1.0
+      uses: actions/checkout@v5.0.0
       name: Step 3
       run:
         pwd
