@@ -5,15 +5,15 @@ on:
 
 jobs:
   job1:
-    name: Step1
+    name: Job1
     runs-on: ubuntu-latest
     steps:
-      - name: Step 2 - Checkout
+      - name: Step 1
         run:
           pwd
           ls -ltr
           hostname
-      - name: Checkout
+      - name: Step 2 - Checkout
       uses: actions/checkout@v5.0.0
       name: Step 3
       run:
