@@ -23,7 +23,7 @@ jobs:
           echo `hostname` >> artifacts/hostname.txt
       - name: Upload single file
         uses: actions/upload-artifact@v5.0.0
-        with: 
+        with:
           name: single_file
           path: ./myartifact.txt
       - name: Upload from dir
