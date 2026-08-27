@@ -1,14 +1,7 @@
-
-
 name: my-first-workflow
 # To get a trigger on every push 
 on: 
-  #push:
-  #schedule:
-    - cron: "5 * * * *"
-  #workflow_dispatch: 
   push: 
-  
 
 jobs:
   job1:
