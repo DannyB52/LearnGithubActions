@@ -49,4 +49,4 @@ jobs:
           pwd
           ls -ltr
       - name: Stop for PR demo
-        run: exit 1
+        run: exit 0
