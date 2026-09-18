@@ -48,5 +48,9 @@ jobs:
         run: |
           pwd
           ls -ltr
+      - name: Refering repo secret
+        run: |
+          echo "[Info ] app password is $ {{ secrets.APP_PASSWORD }} "
+      
       - name: Stop for PR demo
         run: exit 0
