@@ -65,7 +65,7 @@ jobs:
   staging:
     name: Stage Deployment
     runs-on: ubuntu-latest
-
+    environment: Staging  # Corrected syntax
     steps: 
       - name: Referring Environment Variables
         run: echo "[INFO] Running deployment on ${{ vars.HOST }} using ${{ vars.USER }}. "
