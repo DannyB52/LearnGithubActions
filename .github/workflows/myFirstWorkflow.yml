@@ -73,14 +73,14 @@ jobs:
         run: echo "[INFO] Password config loaded." # Avoid echoing raw secrets
     environment: 
       name: Staging  # Corrected syntax
-#  production:
-#    name: Production Deployment
-#
-#    runs-on: ubuntu-latest
-#    environment: PRODUCTION  # Corrected syntax
-#    steps:
-#      - name: Referring Environment Variables
-#        run: echo "[INFO] Running deployment on  vars.Host using {{ vars.User }}. "
-#      - name: Referring Environment Secrets
-#        run: echo "[INFO] Password config loaded."
-  
+  production:
+    name: Production Deployment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Referring Environment Variables
+        run: echo "[INFO] Running deployment on ${{ vars.HOST }}  using ${{ vars.USER }}. "
+      - name: Referring Environment Secrets
+        run: echo "[INFO] Password config loaded."
+    environment:
+      name: Production  # Corrected syntax
