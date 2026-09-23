@@ -65,7 +65,7 @@ jobs:
   staging:
     name: Stage Deployment
     runs-on: ubuntu-latest
-    environment: STAGING  # Corrected syntax
+    environment: Staging  # Corrected syntax
     steps: 
       - name: Referring Environment Variables
         run: echo "[INFO] Running deployment on  vars.Host using {{ vars.User }}. "
@@ -75,10 +75,10 @@ jobs:
 #  production:
 #    name: Production Deployment
 #    runs-on: ubuntu-latest
-#    environment: PRODUCTION  # Corrected syntax
+#    environment: Production  # Corrected syntax
 #    steps:
 #      - name: Referring Environment Variables
-#        run: echo "[INFO] Running deployment on  vars.Host using {{ vars.User }}. "
+#        run: echo "[INFO] Running deployment on  vars.HOST using {{ vars.USER }}. "
 #      - name: Referring Environment Secrets
 #        run: echo "[INFO] Password config loaded."
   
