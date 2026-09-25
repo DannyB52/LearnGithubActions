@@ -15,13 +15,13 @@ jobs:
    steps:
      - name: Checkout Code  
        uses: actions/checkout@v5.1.0
-    - name: Setup Python
-      uses: actions/setup-python@v7.0.0
-      with:
+     - name: Setup Python
+       uses: actions/setup-python@v7.0.0
+       with:
         python-version: '3.10'
-    - name: Install Dependencies
-      run: |
+     - name: Install Dependencies
+       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Run Unit Tests
-      run: pytest -v 
+     - name: Run Unit Tests
+       run: pytest -v
