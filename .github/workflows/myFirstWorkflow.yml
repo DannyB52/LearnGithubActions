@@ -9,78 +9,19 @@ on:
       - main
       
 jobs:
-  job1:
-    name: Job1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Step-1
-        run: |
-          pwd
-          ls -ltr
-          
-      - name: Step-2
-        uses: actions/checkout@v5.0.0
-      - name: Step-3
-        run: |
-          echo `pwd` >> myartifact.txt
-          mkdir artifacts
-          echo `ls -ltr` >> artifacts/list.txt
-          echo `hostname` >> artifacts/hostname.txt
-      - name: Upload single file
-        uses: actions/upload-artifact@v5.0.0
-        with:
-          name: single_file
-          path: ./myartifact.txt
-  job2:
-    name: Job2
-    needs: job1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checking current directory
-        run: |
-          pwd
-          ls -ltr
-      - name: Download single file artifact
-        uses: actions/download-artifact@v5.0.0
-        with:
-          name: single_file
-      - name: Checking current directory post download
-        run: |
-          pwd
-          ls -ltr
-      - name: Refering repo secret
-        run: |
-          echo "[Info ] app password is ${{ secrets.APP_PASSWORD }} "
-  job3:
-    name: Job3
-    runs-on: ubuntu-latest
-    steps:
-      - name: Referring context or in-built variables.
-        run: |
-          echo "[INFO] Triggered by ${{ github.event_name }}"
-          echo "[INFO] New changes were added by ${{ github.actor }} in ${{ github.ref_name }} branch. "
-          echo "[INFO] Current step is running on ${{ runner.os }}. "
-          echo "[INFO] Current Job Id is ${{ job.check_run_id }}. "
-          
-  staging:
-    name: Stage Deployment
-    runs-on: ubuntu-latest
-    environment: Staging  # Corrected syntax
-    steps: 
-      - name: Referring Environment Variables
-        run: echo "[INFO] Running deployment on ${{ vars.HOST }} using ${{ vars.USER }}. "
-      - name: Referring Environment Secrets
-        run: echo "[INFO] Password config loaded." # Avoid echoing raw secrets
-    environment: 
-      name: Staging  # Corrected syntax
-  production:
-    name: Production Deployment
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Referring Environment Variables
-        run: echo "[INFO] Running deployment on ${{ vars.HOST }}  using ${{ vars.USER }}. "
-      - name: Referring Environment Secrets
-        run: echo "[INFO] Password config loaded."
-    environment:
-      name: Production  # Corrected syntax
+  unit-tests:
+   name: Running Unit Tests
+   runs-on: ubuntu-latest  
+   steps:
+     - name: Checkout Code  
+       uses: actions/checkout@v5.1.0
+    - name: Setup Python
+      uses: actions/setup-python@v7.0.0
+      with:
+        python-version: '3.10'
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run Unit Tests
+      run: pytest -v 
