@@ -7,6 +7,7 @@ on:
     branches:
      - main
   pull_request:
+      branches:
       - main
       - dev
 
@@ -30,7 +31,7 @@ jobs:
          mkdir reports/
          pytest --junitxml=reports/unit-test-results.xml --cov=. --cov-report=xml --cov-report=term-missing -v 
      - name: Upload Code Coverage Report
-       uses: actions/upload-artifact@v3
+       uses: actions/upload-artifact@v4
        with:
          name: unit-test-results
          path: reports/
