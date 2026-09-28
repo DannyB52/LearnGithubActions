@@ -79,3 +79,4 @@ jobs:
           args:
             -Dsonar.projectKey=DannyB52_LearnGithubActions
             -Dsonar.sources=.
+            -Dsonar.analysis.mode=issues
