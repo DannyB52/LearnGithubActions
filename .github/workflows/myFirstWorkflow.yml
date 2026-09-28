@@ -1,58 +1,25 @@
 name: my-first-workflow
-# To get a trigger on every push 
+
+# To get a trigger on every push
 on:
   push:
     branches:
+     - main
+  pull_request:
       - main
+      - dev
   pull_request: 
     branches:
-      - main
-      
-jobs:
-  job1:
-    name: Job1
+     - main
+
+jobs: 
+  unit-tests:
+    name: Running Unit Tests
     runs-on: ubuntu-latest
     steps:
-      - name: Step-1
-        run: |
-          pwd
-          ls -ltr
-          
-      - name: Step-2
-        uses: actions/checkout@v5.0.0
-      - name: Step-3
-        run: |
-          echo `pwd` >> myartifact.txt
-          mkdir artifacts
-          echo `ls -ltr` >> artifacts/list.txt
-          echo `hostname` >> artifacts/hostname.txt
-      - name: Upload single file
-        uses: actions/upload-artifact@v5.0.0
-        with:
-          name: single_file
-          path: ./myartifact.txt
-  job2:
-    name: Job2
-    needs: job1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checking current directory
-        run: |
-          pwd
-          ls -ltr
-      - name: Download single file artifact
-        uses: actions/download-artifact@v5.0.0
-        with:
-          name: single_file
-      - name: Checking current directory post download
-        run: |
-          pwd
-          ls -ltr
-      - name: Refering repo secret
-        run: |
-          echo "[Info ] app password is ${{ secrets.APP_PASSWORD }} "
-  job3:
-    name: Job3
+     - name: Checkout Code
+       uses: actions/checkout@v5
+    name: Running Unit Tests
     runs-on: ubuntu-latest
     steps:
       - name: Referring context or in-built variables.
@@ -77,7 +44,14 @@ jobs:
   production:
     name: Production Deployment
     runs-on: ubuntu-latest
-
+    permissions:
+      actions: read
+      contents: read
+      security-events: write # Required to upload the results of the CodeQL analysis
+    strategy:
+      matrix:
+        language: [python]
+      fail-fast: false
     steps:
       - name: Referring Environment Variables
         run: echo "[INFO] Running deployment on ${{ vars.HOST }}  using ${{ vars.USER }}. "
