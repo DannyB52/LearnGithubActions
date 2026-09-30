@@ -22,5 +22,6 @@ jobs:
     uses: DannyB52/reusable-workflow/.github/workflows/ci-pipeline.yml@main
     secrets:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        #DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
 
