@@ -6,11 +6,9 @@ on:
     branches:
      - main
   pull_request:
+    branches:
       - main
       - dev
-  pull_request: 
-    branches:
-     - main
 
 jobs: 
   unit-tests:
@@ -19,16 +17,14 @@ jobs:
     steps:
      - name: Checkout Code
        uses: actions/checkout@v5
-    name: Running Unit Tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Referring context or in-built variables.
-        run: |
-          echo "[INFO] Triggered by ${{ github.event_name }}"
-          echo "[INFO] New changes were added by ${{ github.actor }} in ${{ github.ref_name }} branch. "
-          echo "[INFO] Current step is running on ${{ runner.os }}. "
-          echo "[INFO] Current Job Id is ${{ job.check_run_id }}. "
-          
+
+     - name: Referring context or in-built variables.
+       run: |
+         echo "[INFO] Triggered by ${{ github.event_name }}"
+         echo "[INFO] New changes were added by ${{ github.actor }} in ${{ github.ref_name }} branch. "
+         echo "[INFO] Current step is running on ${{ runner.os }}. "
+         echo "[INFO] Current Job Id is ${{ job.check_run_id }}. "
+
   staging:
     name: Stage Deployment
     runs-on: ubuntu-latest
