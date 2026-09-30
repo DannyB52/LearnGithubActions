@@ -18,7 +18,8 @@ permissions:
 
 jobs: 
   ci-pipeline-job:
-    uses: DannyB52/LearnGithubActions/.github/workflows/ci-pipeline.yml@main
+    #DannyB52/reusable-workflow/blob/main/.github/workflows/ci-pipeline.yml
+    uses: DannyB52/reusable-workflow/.github/workflows/ci-pipeline.yml@main
     secrets:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         #DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
