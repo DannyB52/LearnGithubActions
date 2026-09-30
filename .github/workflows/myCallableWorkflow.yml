@@ -1,0 +1,21 @@
+name: my-second-workflow
+
+
+# To get a trigger on every push
+on:
+  push:
+    branches:
+     - main
+     - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs: 
+  ci-pipeline:
+    uses: DannyB52/repo-name/.github/workflows/ci-pipeline.yml@main
+    secrets:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        #DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+
