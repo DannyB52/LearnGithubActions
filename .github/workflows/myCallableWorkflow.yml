@@ -14,7 +14,7 @@ on:
 
 jobs: 
   ci-pipeline:
-    uses: DannyB52/repo-name/.github/workflows/ci-pipeline.yml@main
+    uses: DannyB52/LearnGithubActions/.github/workflows/ci-pipeline.yml@main
     secrets:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         #DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
