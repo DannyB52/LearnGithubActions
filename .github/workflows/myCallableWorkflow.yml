@@ -11,9 +11,13 @@ on:
     branches:
       - main
       - dev
+permissions:
+    actions: read
+    contents: read
+    security-events: write # Required to upload the results of the CodeQL analysis
 
 jobs: 
-  ci-pipeline:
+  ci-pipeline-job:
     uses: DannyB52/LearnGithubActions/.github/workflows/ci-pipeline.yml@main
     secrets:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
